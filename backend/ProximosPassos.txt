@@ -1,0 +1,2 @@
+- Mudar a key para o .env
+- Fazer tipagem do que ainda não tem
