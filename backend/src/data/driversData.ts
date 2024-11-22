@@ -37,4 +37,37 @@ const driversData = [
     }
 ]
 
+type Driver = {
+    id: number;
+    name: string;
+    description: string;
+    vehicle: string;
+    review: {
+        rating: number;
+        comment: string;
+    };
+    value: number;
+    minKm: number;
+}
+
+export function checkHasDriver(id: number): boolean {
+    const hasDriver = driversData.find(driver => driver.id === id);
+    return !!hasDriver;
+}
+
+export function getDriverById(id: number): Driver | undefined {
+    const driver = driversData.find(driver => driver.id === id);
+    return driver;
+}
+
+export function distanceIsValidToDriver(distance: number, driverId: number): boolean {
+    const driver = getDriverById(driverId);
+    if (driver) {
+        if (driver.minKm <= distance) {
+            return true;
+        }
+    }
+    return false;
+}
+
 export default driversData;

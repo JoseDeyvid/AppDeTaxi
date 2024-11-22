@@ -1,5 +1,5 @@
 import axios from "axios";
-import driversData from "../data/DriversData";
+import driversData from "../data/driversData";
 
 class CalculateTravelService {
     async execute(origin: String, destination: String) {
