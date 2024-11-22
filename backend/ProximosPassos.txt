@@ -4,3 +4,4 @@
 - Utilizar middlewares para validação
 - Utilizar um banco de dados real
 - Verificar se todos os tipos estão corretos de acordo com o pdf.
+- Remover função que coloquei para testar apenas: getTravels()
