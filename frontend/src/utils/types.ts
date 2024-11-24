@@ -1,13 +1,30 @@
 
 export type Travel = {
-    routeResponse: RouteResponse,
     origin: Coords,
-    destination: Coords
+    destination: Coords,
+    distance: string,
+    duration: string,
+    options: Driver[],
+    routeResponse: RouteResponse,
 }
 
 export type Coords = {
     latitude: number,
     longitude: number
+}
+
+export type Driver = {
+    id: number,
+    name: string,
+    description: string,
+    vehicle: string,
+    review: Review,
+    value: number
+}
+
+type Review = {
+    rating: number,
+    comment: string
 }
 
 type RouteResponse = {
@@ -24,4 +41,18 @@ type Leg = {
 
 type Polyline = {
     encodedPolyline: string
+}
+
+export type Ride = {
+    id: number,
+    date: Date,
+    origin: Coords,
+    destination: Coords,
+    distance: number,
+    duration: string,
+    driver: {
+        id: number,
+        name: string
+    },
+    value: number
 }

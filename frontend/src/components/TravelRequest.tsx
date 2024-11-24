@@ -3,11 +3,12 @@ import axios from 'axios'
 import { Travel } from '../utils/types'
 
 type Props = {
-    setTravel: React.Dispatch<React.SetStateAction<Travel | undefined>>
+    setTravel: React.Dispatch<React.SetStateAction<Travel | undefined>>,
+    customerId: number | undefined,
+    setCustomerId: React.Dispatch<React.SetStateAction<number | undefined>>
 }
 
-const TravelRequest = ({setTravel}: Props) => {
-    const [customerId, setCustomerId] = useState('')
+const TravelRequest = ({ setTravel, customerId, setCustomerId }: Props) => {
     const [origin, setOrigin] = useState('')
     const [destination, setDestination] = useState('')
 
@@ -27,7 +28,7 @@ const TravelRequest = ({setTravel}: Props) => {
         <form onSubmit={(e) => calculateHandler(e)}>
             <div>
                 <label htmlFor="">ID: </label>
-                <input type="text" value={customerId} onChange={(e) => setCustomerId(e.target.value)} />
+                <input type="text" value={customerId} onChange={(e) => setCustomerId(Number(e.target.value))} />
             </div>
             <div>
                 <label htmlFor="">Origem: </label>
