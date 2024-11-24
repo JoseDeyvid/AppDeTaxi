@@ -1,0 +1,32 @@
+    BACKEND
+- Utilizar middlewares para validação
+- Utilizar um banco de dados real
+- Remover função que coloquei para testar apenas: getTravels()
+
+
+
+
+    FRONTEND
+- Deixar a baseUrl como default
+- Faltando chamar a api para buscar o historico de viagens
+- Corrigir erro que aparece na primeira tela no input do id(principalmente quando digita um valor que nao é numero)
+- Buscar os Drivers("Motoristas") do banco de dados.
+
+
+
+
+    AMBOS
+- Mudar a key para o .env
+- Fazer tipagem do que ainda não tem
+- Separar as funções em blocos menores
+- Verificar se todos os tipos estão corretos de acordo com o pdf.
+- Acredito que o ideal seja passar origin, destination e polyline por parametro para pegar o mapa, e não precisar chamar a api do google
+dnv dentro de /ride/map(talvez seja melhor montar o mapa no frontend, tendo em vista que não foi passado esse endpoint)
+- Fazer validações mais especificas nos erros.
+
+
+
+
+    DUVIDAS
+- Na ultima tela do front, faz mais sentido chamar todas as viagens do usuario e mostrar só aquelas com o motorista selecionado, ou 
+fazer uma nova requisição sempre que o motorista é trocado?
