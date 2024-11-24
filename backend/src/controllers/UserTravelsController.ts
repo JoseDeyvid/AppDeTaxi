@@ -11,7 +11,7 @@ class UserTravelsController {
         if (!customer_id) {
             res.status(400).send({
                 "error_code": "INVALID_DATA",
-                "error_description": "O id do usuário não pode estar em branco."
+                "error_description": "O id do usuario nao pode estar em branco."
             })
             return;
         }
@@ -23,7 +23,7 @@ class UserTravelsController {
                     "error_code":
                         "INVALID_DRIVER",
                     "error_description":
-                        "A opção de motorista informada é inválida"
+                        "A opção de motorista informada e invalida"
                 });
                 return;
             }
@@ -57,12 +57,12 @@ class UserTravelsController {
                 "error_code":
                     "NO_RIDES_FOUND",
                 "error_description":
-                    "Nenhuma viagem foi encontrada com os parâmetros passados."
+                    "Nenhuma viagem foi encontrada com os parametros passados."
             });
             return;
         }
 
-        res.statusMessage = "Operação realizada com sucesso";
+        res.statusMessage = "Operacao realizada com sucesso";
         res.status(200).send({
             "customer_id": customer_id,
             "rides": formattedTravels

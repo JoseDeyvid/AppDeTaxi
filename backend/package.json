@@ -11,12 +11,15 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.6.3"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
     "axios": "^1.7.7",
+    "cors": "^2.8.5",
     "express": "^4.21.1"
   }
 }

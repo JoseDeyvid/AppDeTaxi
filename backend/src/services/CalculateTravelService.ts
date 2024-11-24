@@ -33,7 +33,7 @@ class CalculateTravelService {
             })
             return {
                 statusCode: 200,
-                description: "Operação realizada com sucesso",
+                description: "Operacao realizada com sucesso",
                 data: {
                     "origin": travelInfos.startLocation.latLng,
                     "destination": travelInfos.endLocation.latLng,
@@ -46,10 +46,10 @@ class CalculateTravelService {
         } catch (error) {
             return {
                 statusCode: 400,
-                description: "Os dados fornecidos no corpo da requisição são inválidos",
+                description: "Os dados fornecidos no corpo da requisicao são invalidos",
                 data: {
                     "error_code": "INVALID_DATA",
-                    "error_description": "Os dados fornecidos no corpo da requisição são inválidos"
+                    "error_description": "Os dados fornecidos no corpo da requisicao são invalidos"
                 }
             }
         }

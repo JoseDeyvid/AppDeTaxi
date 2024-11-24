@@ -5,3 +5,6 @@
 - Utilizar um banco de dados real
 - Verificar se todos os tipos estão corretos de acordo com o pdf.
 - Remover função que coloquei para testar apenas: getTravels()
+- Acredito que o ideal seja passar origin, destination e polyline por parametro para pegar o mapa, e não precisar chamar a api do google
+dnv dentro de /ride/map(talvez seja melhor montar o mapa na api, tendo em vista que não foi passado esse endpoint)
+- Fazer validações mais especificas nos erros.
