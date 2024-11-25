@@ -18,7 +18,7 @@ const TravelOptions = ({ travel, customerId, setHistoryTravels }: Props) => {
         const loadMap = async () => {
 
             try {
-                const res = await axios.get("http://localhost:3333/ride/map", {
+                const res = await axios.get("http://localhost:8080/ride/map", {
                     params: {
                         origin: `${origin.latitude},${origin.longitude}`,
                         destination: `${destination.latitude},${destination.longitude}`
@@ -35,7 +35,7 @@ const TravelOptions = ({ travel, customerId, setHistoryTravels }: Props) => {
     }, [])
 
     const confirmTravelHandler = async (driver: Driver) => {
-        const res = await axios.patch("http://localhost:3333/ride/confirm", {
+        const res = await axios.patch("http://localhost:8080/ride/confirm", {
             "customer_id": customerId,
             "origin": travel.origin,
             "destination": travel.destination,

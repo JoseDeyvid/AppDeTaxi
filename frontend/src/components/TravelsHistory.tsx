@@ -23,7 +23,7 @@ const TravelsHistory = ({ }: Props) => {
     useEffect(() => {
         const loadDrivers = async () => {
             try {
-                const res = await axios.get(`http://localhost:3333/ride/${customerId}`)
+                const res = await axios.get(`http://localhost:8080/ride/${customerId}`)
                 setRides(res.data.rides);
             } catch (error) {
 

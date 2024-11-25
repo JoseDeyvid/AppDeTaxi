@@ -14,7 +14,7 @@ const TravelRequest = ({ setTravel, customerId, setCustomerId }: Props) => {
 
     const calculateHandler = async (e: FormEvent) => {
         e.preventDefault()
-        await axios.post("http://localhost:3333/ride/estimate", {
+        await axios.post("http://localhost:8080/ride/estimate", {
             customer_id: customerId,
             origin,
             destination,
