@@ -10,7 +10,10 @@ const corsOptions = {
     optionSuccessStatus: 200,
 }
 
+const PORT = 8080;
+const HOST = '0.0.0.0'
+
 app.use(cors(corsOptions))
 app.use(express.json());
 app.use("/ride", router);
-app.listen(3333, () => console.log('Servidor online!'))
+app.listen(PORT, HOST, () => console.log('Server subiu!'))
