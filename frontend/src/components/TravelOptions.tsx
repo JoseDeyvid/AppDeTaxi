@@ -37,9 +37,9 @@ const TravelOptions = ({ travel, customerId, setHistoryTravels }: Props) => {
     const confirmTravelHandler = async (driver: Driver) => {
         const res = await axios.patch("http://localhost:8080/ride/confirm", {
             "customer_id": customerId,
-            "origin": travel.origin,
-            "destination": travel.destination,
-            "distance": travel.distance,
+            "origin": `${travel.origin.latitude}, ${travel.origin.longitude}`,
+            "destination": `${travel.destination.latitude}, ${travel.destination.longitude}`,
+            "distance": Number(travel.distance.replace("s", "")),
             "duration": travel.duration,
             "driver": {
                 "id": driver.id,

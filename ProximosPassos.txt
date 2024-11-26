@@ -11,6 +11,7 @@
 - Faltando chamar a api para buscar o historico de viagens
 - Corrigir erro que aparece na primeira tela no input do id(principalmente quando digita um valor que nao é numero)
 - Buscar os Drivers("Motoristas") do banco de dados.
+- Corrigir bug de mostrar as viagens do user anterior quando deixa o input do id vazio.
 
 
 

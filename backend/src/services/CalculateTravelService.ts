@@ -1,5 +1,5 @@
 import axios from "axios";
-import driversData from "../data/driversData";
+import prisma from "../prisma";
 
 class CalculateTravelService {
     async execute(origin: String, destination: String) {
@@ -19,7 +19,9 @@ class CalculateTravelService {
                 }
             })
             const travelInfos = res.data.routes[0].legs[0]
-            const options = driversData.filter((driver) => {
+            const drivers = await prisma.driver.findMany();
+
+            const options = drivers.filter((driver) => {
                 return travelInfos.distanceMeters / 1000 >= driver.minKm
             }).map((driver) => {
                 return {
@@ -27,7 +29,10 @@ class CalculateTravelService {
                     name: driver.name,
                     description: driver.description,
                     vehicle: driver.vehicle,
-                    review: driver.review,
+                    review: {
+                        rating: driver.reviewRating,
+                        comment: driver.reviewComment
+                    },
                     value: driver.value,
                 }
             })

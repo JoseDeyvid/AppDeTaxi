@@ -9,7 +9,7 @@ type Props = {
 
 const TravelsHistory = ({ }: Props) => {
 
-    const [customerId, setCustomerId] = useState<string>()
+    const [customerId, setCustomerId] = useState<string>("1")
     const [driverSelected, setDriverSelected] = useState<number | null>(null)
     const [rides, setRides] = useState<Ride[]>([]);
     const filteredRides = rides.filter((ride) => driverSelected ? ride.driver.id === driverSelected : true);
@@ -21,7 +21,7 @@ const TravelsHistory = ({ }: Props) => {
     ])
 
     useEffect(() => {
-        const loadDrivers = async () => {
+        const loadRides = async () => {
             try {
                 const res = await axios.get(`http://localhost:8080/ride/${customerId}`)
                 setRides(res.data.rides);
@@ -30,7 +30,7 @@ const TravelsHistory = ({ }: Props) => {
             }
 
         }
-        loadDrivers();
+        loadRides();
     }, [customerId])
 
     const changeDriverSelected = (id?: number) => {

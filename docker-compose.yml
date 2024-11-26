@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  db:
+    build:
+      context: ./db
+    container_name: db_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: taxi
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app_taxi_network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend_container
+    ports:
+      - '8080:8080'
+    environment:
+      DATABASE_URL: postgresql://postgres:password@db:5432/taxi
+    depends_on:
+      - db
+    command: >
+      sh -c "
+        /usr/src/app/wait-for-it.sh db:5432 --
+        npx prisma generate &&
+        npm start
+      "
+    networks:
+      - app_taxi_network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend_container
+    ports:
+      - '80:80'
+    depends_on:
+      - backend
+    networks:
+      - app_taxi_network
+
+volumes:
+  db_data:
+
+networks:
+  app_taxi_network:

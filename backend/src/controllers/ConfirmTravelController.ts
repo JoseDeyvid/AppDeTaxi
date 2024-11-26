@@ -56,7 +56,7 @@ class ConfirmTravelController {
         }
 
         const confirmTravelService = new ConfirmTravelService();
-        const travel = await confirmTravelService.execute(travelInfos)
+        await confirmTravelService.execute(travelInfos)
 
         res.statusMessage = "Operacao realizada com sucesso";
         res.status(200).send({ "success": true })

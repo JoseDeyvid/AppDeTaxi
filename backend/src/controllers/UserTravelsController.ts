@@ -43,8 +43,8 @@ class UserTravelsController {
                 "duration":
                     travel.duration,
                 "driver": {
-                    "id": travel.driver.id,
-                    "name": travel.driver.name
+                    "id": travel.driverId,
+                    "name": travel.driverName
                 },
                 "value": travel.value
             }

@@ -1,3 +1,5 @@
+import prisma from "../prisma";
+
 const driversData = [
     {
         id: 1,
@@ -50,18 +52,30 @@ type Driver = {
     minKm: number;
 }
 
-export function checkHasDriver(id: number): boolean {
-    const hasDriver = driversData.find(driver => driver.id === id);
+export async function checkHasDriver(id: number): Promise<boolean> {
+    const hasDriver = await prisma.driver.findFirst({
+        where: {
+            id: id
+        }
+    })
+    // const hasDriver = driversData.find(driver => driver.id === id);
     return !!hasDriver;
 }
 
-export function getDriverById(id: number): Driver | undefined {
-    const driver = driversData.find(driver => driver.id === id);
+export async function getDriverById(id: number) {
+
+    const driver = await prisma.driver.findFirst({
+        where: {
+            id: id
+        }
+    })
+
+
     return driver;
 }
 
-export function distanceIsValidToDriver(distance: number, driverId: number): boolean {
-    const driver = getDriverById(driverId);
+export async function distanceIsValidToDriver(distance: number, driverId: number) {
+    const driver = await getDriverById(driverId);
     if (driver) {
         if (driver.minKm <= distance) {
             return true;
