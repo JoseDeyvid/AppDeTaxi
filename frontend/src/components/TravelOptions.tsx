@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Coords, Driver, Travel } from '../utils/types'
 import axios from 'axios'
 
+import './TravelOptions.css'
+
 type Props = {
     travel: Travel,
     customerId: number | undefined,
@@ -50,22 +52,23 @@ const TravelOptions = ({ travel, customerId, setHistoryTravels }: Props) => {
         setHistoryTravels(true);
     }
     return (
-        <div>
+        <div className='travelOptionsContainer'>
             {mapUrl ? (
                 <>
-                    <h3>Duração estimada: {duration}</h3>
                     <img src={mapUrl} alt='Rota do mapa' />
-                    <div>
+                    <h3>Duração estimada: {duration}</h3>
+                    <div className='driverOptions'>
+                        <h4>Motoristas disponiveis: </h4>
                         {travel.options.map((driver) => (
-                            <div key={driver.id}>
-                                <p>{driver.name}</p>
-                                <p>{driver.description}</p>
-                                <p>{driver.vehicle}</p>
-                                <div>
-                                    <p>{driver.review.rating}</p>
-                                    <p>{driver.review.comment}</p>
+                            <div key={driver.id} className='driver'>
+                                <h5>{driver.name}</h5>
+                                <p>Descrição: <span>{driver.description}</span></p>
+                                <p>Carro: <span>{driver.vehicle}</span></p>
+                                <div className='review'>
+                                    <p>Avaliação: <span>{driver.review.rating}/5</span></p>
+                                    <p>Comentário: <span>{driver.review.comment}</span></p>
                                 </div>
-                                <p>{driver.value}</p>
+                                <p>Preço da corrida: <span>{driver.value}</span></p>
                                 <button onClick={() => confirmTravelHandler(driver)}>Escolher</button>
                             </div>
                         ))}

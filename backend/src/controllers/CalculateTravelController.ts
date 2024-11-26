@@ -26,7 +26,6 @@ class CalculateTravelController {
             })
             return;
         }
-
         const calculateTravelService = new CalculateTravelService();
         const travel = await calculateTravelService.execute(origin, destination)
 

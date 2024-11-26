@@ -46,8 +46,8 @@ type Polyline = {
 export type Ride = {
     id: number,
     date: Date,
-    origin: Coords,
-    destination: Coords,
+    origin: string,
+    destination: string,
     distance: number,
     duration: string,
     driver: {

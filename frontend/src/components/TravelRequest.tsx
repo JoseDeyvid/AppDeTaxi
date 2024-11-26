@@ -2,6 +2,8 @@ import React, { FormEvent, useState } from 'react'
 import axios from 'axios'
 import { Travel } from '../utils/types'
 
+import './TravelRequest.css'
+
 type Props = {
     setTravel: React.Dispatch<React.SetStateAction<Travel | undefined>>,
     customerId: number | undefined,
@@ -26,17 +28,17 @@ const TravelRequest = ({ setTravel, customerId, setCustomerId }: Props) => {
     }
     return (
         <form onSubmit={(e) => calculateHandler(e)}>
-            <div>
-                <label htmlFor="">ID: </label>
-                <input type="text" value={customerId} onChange={(e) => setCustomerId(Number(e.target.value))} />
+            <div className='formControl'>
+                <label htmlFor="">ID</label>
+                <input type="text" value={customerId} onChange={(e) => setCustomerId(Number(e.target.value))} placeholder='Informe o id do usuário' />
             </div>
-            <div>
-                <label htmlFor="">Origem: </label>
-                <input type="text" value={origin} onChange={(e) => setOrigin(e.target.value)} />
+            <div className='formControl'>
+                <label htmlFor="">Origem</label>
+                <input type="text" value={origin} onChange={(e) => setOrigin(e.target.value)} placeholder='Informe o ponto de partida' />
             </div>
-            <div>
-                <label htmlFor="">Destino: </label>
-                <input type="text" value={destination} onChange={(e) => setDestination(e.target.value)} />
+            <div className='formControl'>
+                <label htmlFor="">Destino</label>
+                <input type="text" value={destination} onChange={(e) => setDestination(e.target.value)} placeholder='Informe o ponto de chegada' />
             </div>
             <button type='submit'>Calcular viagem</button>
         </form>

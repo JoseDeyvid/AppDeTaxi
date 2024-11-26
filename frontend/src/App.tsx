@@ -12,7 +12,8 @@ function App() {
   const [historyTravels, setHistoryTravels] = useState(false)
 
   return (
-    <div>
+    <div className='container'>
+      <h1 className='title'>Taxi App</h1>
       {!!!travel && !historyTravels && <TravelRequest setTravel={setTravel} customerId={customerId} setCustomerId={setCustomerId} />}
       {!!travel && !historyTravels && <TravelOptions travel={travel} customerId={customerId} setHistoryTravels={setHistoryTravels} />}
       {historyTravels && <TravelsHistory />}

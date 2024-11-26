@@ -1,5 +1,3 @@
-const path = require("path");
-require("dotenv").config({path: path.resolve(__dirname, '../../.env')})
 import { Router, Request, Response } from "express";
 import CalculateTravelController from "./controllers/CalculateTravelController";
 import ConfirmTravelController from "./controllers/ConfirmTravelController";
@@ -20,7 +18,7 @@ router.get('/map', async (req: Request, res: Response) => {
             origin,
             destination,
             mode: "driving",
-            key: "AIzaSyABnRgaRiD6Ezk_WDUToeX5Uc1zRqQlUpM", // Defina sua chave em um arquivo .env
+            key: process.env.GOOGLE_API_KEY || "AIzaSyABnRgaRiD6Ezk_WDUToeX5Uc1zRqQlUpM", // Defina sua chave em um arquivo .env
         },
     });
 
@@ -44,7 +42,7 @@ router.get('/map', async (req: Request, res: Response) => {
     staticMapURL.searchParams.set("path", `enc:${encodedPolyline}`);
     staticMapURL.searchParams.append("markers", `color:red|label:A|${origin}`);
     staticMapURL.searchParams.append("markers", `color:red|label:B|${destination}`);
-    staticMapURL.searchParams.set("key", String("AIzaSyABnRgaRiD6Ezk_WDUToeX5Uc1zRqQlUpM"));
+    staticMapURL.searchParams.set("key", process.env.GOOGLE_API_KEY || "AIzaSyABnRgaRiD6Ezk_WDUToeX5Uc1zRqQlUpM");
 
     res.send({
         staticMapURL,

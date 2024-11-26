@@ -1,0 +1,18 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formControl {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    min-width: 400px;
+}
+
+
+.formControl label {
+    padding-bottom: .3rem;
+}
+

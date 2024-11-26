@@ -1,0 +1,37 @@
+.travelsHistoryContainer {
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0 2rem 0;
+}
+
+.filters label {
+    cursor: pointer;
+    padding: .3rem .7rem;
+    border-radius: 12px;
+    background-color: var(--white);
+}
+
+.filters .selected {
+    background-color: var(--main-green);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.filters input[type="radio"] {
+    display: none;
+}
+
+.rides {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ride {
+    border: 1px solid #000;
+}

@@ -2,6 +2,7 @@
 - Utilizar middlewares para validação
 - Utilizar um banco de dados real
 - Remover função que coloquei para testar apenas: getTravels()
+- Referenciar a key apenas com o valor em .env
 
 
 
@@ -12,6 +13,8 @@
 - Corrigir erro que aparece na primeira tela no input do id(principalmente quando digita um valor que nao é numero)
 - Buscar os Drivers("Motoristas") do banco de dados.
 - Corrigir bug de mostrar as viagens do user anterior quando deixa o input do id vazio.
+- garantir que a duração estimada esteja sempre em pt-br
+- Verificar se existem motoristas disponiveis
 
 
 
@@ -24,6 +27,7 @@
 - Acredito que o ideal seja passar origin, destination e polyline por parametro para pegar o mapa, e não precisar chamar a api do google
 dnv dentro de /ride/map(talvez seja melhor montar o mapa no frontend, tendo em vista que não foi passado esse endpoint)
 - Fazer validações mais especificas nos erros.
+- Buscar motoristas no back e trazer pra ultima tela no front.
 
 
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Driver, Travel } from '../utils/types'
 import axios from 'axios'
 import { Ride } from '../utils/types'
+import './TravelsHistory.css'
 
 type Props = {
 
@@ -16,7 +17,7 @@ const TravelsHistory = ({ }: Props) => {
     const [drivers, setDrivers] = useState([
         { "id": 1, "name": "Homer" },
         { "id": 2, "name": "Dominic" },
-        { "id": 3, "name": "James" } 
+        { "id": 3, "name": "James" }
 
     ])
 
@@ -41,32 +42,36 @@ const TravelsHistory = ({ }: Props) => {
         }
     }
     return (
-        <div>
-            <div>
-                <label htmlFor="">ID do usuário: </label>
-                <input type="text" value={customerId} onChange={(e) => setCustomerId(e.target.value)} />
+        <div className='travelsHistoryContainer'>
+            <div className='formControl'>
+                <label htmlFor="">ID</label>
+                <input type="text" value={customerId} onChange={(e) => setCustomerId(e.target.value)} placeholder='Informe o id do usuário' />
             </div>
-            <input type="radio" value="Todos" checked={!driverSelected} onChange={() => changeDriverSelected()} />
-            <label htmlFor="">Todos</label>
-            {drivers.map((driver) => (
-                <>
-                    <input type="radio" key={driver.id} value={driver.name} checked={driverSelected === driver.id} onChange={() => changeDriverSelected(driver.id)} />
-                    <label htmlFor="">{driver.name}</label>
-                </>
-            ))}
-            {filteredRides.map((ride) => (
-                <div>
-                    <p>{ride.date.toLocaleString()}</p>
-                    <p>{ride.driver.name}</p>
-                    <p>{ride.origin.latitude}</p>
-                    <p>{ride.origin.longitude}</p>
-                    <p>{ride.destination.latitude}</p>
-                    <p>{ride.destination.longitude}</p>
-                    <p>{ride.distance}</p>
-                    <p>{ride.duration}</p>
-                    <p>{ride.value}</p>
-                </div>
-            ))}
+            <div className="filters">
+                <input type="radio" value="Todos" checked={!driverSelected} />
+                <label className={`${!driverSelected ? "selected" : ""}`} onClick={() => changeDriverSelected()}>Todos</label>
+                {drivers.map((driver) => (
+                    <>
+                        <input type="radio" key={driver.id} value={driver.name} checked={driverSelected === driver.id} onChange={() => changeDriverSelected(driver.id)} />
+                        <label className={`${driverSelected === driver.id ? "selected" : ""}`} onClick={() => changeDriverSelected(driver.id)}>{driver.name}</label>
+                    </>
+                ))}
+            </div>
+            <div className="driverOptions">
+                {filteredRides.map((ride) => (
+                    <div className='driver'>
+                        <p><span>Data: </span>{ride.date.toLocaleString()}</p>
+                        <p><span>Motorista: </span>{ride.driver.name}</p>
+                        <p><span>Origem: </span>{ride.origin}</p>
+                        {/* <p>{ride.origin.longitude}</p> */}
+                        <p><span>Destino: </span>{ride.destination}</p>
+                        {/* <p>{ride.destination.longitude}</p> */}
+                        <p><span>Distância: </span>{ride.distance}</p>
+                        <p><span>Duração: </span>{ride.duration}</p>
+                        <p><span>Valor: </span>{ride.value} R$</p>
+                    </div>
+                ))}
+            </div>
 
         </div>
     )

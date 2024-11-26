@@ -1,9 +1,12 @@
 import express, { Express } from "express"
 import { router } from "./routes"
 
+import path from "path";
+require("dotenv").config({ path: path.resolve(__dirname, '../../.env') })
+
 const app: Express = express()
 
-const cors = require("cors");
+import cors from "cors";
 const corsOptions = {
     origin: '*',
     credentials: true,
