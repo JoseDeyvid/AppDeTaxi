@@ -8,11 +8,13 @@ form {
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
-    min-width: 400px;
+    min-width: 500px;
 }
 
 
 .formControl label {
     padding-bottom: .3rem;
+    color: var(--second-green);
+    font-weight: bold;
 }
 

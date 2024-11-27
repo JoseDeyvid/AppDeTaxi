@@ -8,8 +8,7 @@
     padding: .5rem 1rem;
 }
 
-/* Opções de motoristas */
-.driverOptions {
+.options {
     margin-top: 1rem;
     padding: .5rem;
     display: flex;
@@ -18,11 +17,11 @@
     
 }
 
-.driverOptions h4 {
+.options h4 {
     font-size: 20px;
 }
 
-.driver {
+.option {
     background: var(--second-green);
     color: var(--white);
     font-weight: bold;
@@ -33,16 +32,20 @@
     gap: 1rem;
 }
 
-.driver h5 {
+.option h5 {
     font-size: 20px;
     margin-bottom: 1rem;
 }
 
-.driver p span{
+.option p {
+    padding: .5rem;
+}
+
+.option p span{
     background-color: var(--light-green);
     color: var(--black);
     border-radius: 4px;
-    padding: 0.2rem;
+    padding: 0 .5rem;
     margin-right: .2rem;
     font-weight: normal;
 }
@@ -56,13 +59,19 @@
 }
 
 
-.driver button {
+.option button {
     background: #fff;
     color: var(--second-green);
     margin-top: 1rem;
 }
 
-.driver button:hover {
+.option button:hover {
     color: var(--white);
     background-color: var(--light-green);
+}
+
+.noOptions {
+    font-size: 20px;
+    text-align: center;
+    padding: 2rem;
 }

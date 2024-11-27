@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "src/pages/TravelOptions.tsx", "src/pages/TravelRequest.tsx", "src/pages/TravelsHistory.tsx"]
 }

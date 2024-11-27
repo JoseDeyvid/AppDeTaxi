@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import './App.css'
-import TravelRequest from './components/TravelRequest'
+import TravelRequest from './pages/TravelRequest'
 import { Travel } from './utils/types'
-import TravelOptions from './components/TravelOptions';
-import TravelsHistory from './components/TravelsHistory';
+import TravelOptions from './pages/TravelOptions';
+import TravelsHistory from './pages/TravelsHistory';
 
 function App() {
 
   const [travel, setTravel] = useState<Travel>();
-  const [customerId, setCustomerId] = useState<number | undefined>()
+  const [customerId, setCustomerId] = useState<string>("")
   const [historyTravels, setHistoryTravels] = useState(false)
 
   return (

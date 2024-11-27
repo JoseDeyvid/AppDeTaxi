@@ -26,6 +26,10 @@
     display: none;
 }
 
+.btnSearch {
+    width: 100%;
+}
+
 .rides {
     display: flex;
     flex-direction: column;
