@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 export type Travel = {
     "id": number,
     "date": Date,
-    "customer_id": number,
+    "customer_id": string,
     "origin": string,
     "destination": string,
     "distance": number,
@@ -30,7 +30,7 @@ export function getTravels(req: Request, res: Response) {
     return;
 }
 
-export function getTravelsByUserId(id: number, driver_id?: number): Travel[] {
+export function getTravelsByUserId(id: string, driver_id?: number): Travel[] {
 
     if (driver_id) {
         const travels = travelsData.filter((travel) => travel.customer_id === id && travel.driver.id === driver_id)

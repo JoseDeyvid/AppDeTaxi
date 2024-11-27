@@ -30,7 +30,7 @@ class UserTravelsController {
         }
 
         const userTravelsService = new UserTravelsService();
-        const travels = await userTravelsService.execute(Number(customer_id), String(driver_id));
+        const travels = await userTravelsService.execute(customer_id, Number(driver_id));
         const formattedTravels = travels.map((travel) => {
             return {
                 "id": travel.id,

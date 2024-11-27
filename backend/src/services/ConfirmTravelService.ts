@@ -3,20 +3,21 @@ import prisma from "../prisma";
 
 class ConfirmTravelService {
     async execute(travel: Travel) {
+        console.log('Travel: ', travel);
         await prisma.ride.create({
             data: {
                 customerId: travel.customer_id,
-                date: travel.date,
+                origin: travel.origin,
                 destination: travel.destination,
                 distance: travel.distance,
-                driverName: travel.driver.name,
                 duration: travel.duration,
-                id: travel.id,
-                origin: travel.origin,
+                driverId: travel.driver.id,
+                driverName: travel.driver.name,
                 value: travel.value,
-                driverId: travel.driver.id
             }
         })
+
+
 
     }
 }

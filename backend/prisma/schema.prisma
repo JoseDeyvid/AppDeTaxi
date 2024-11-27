@@ -24,7 +24,7 @@ model Driver {
 model Ride {
   id          Int      @id @default(autoincrement())
   date        DateTime @default(now())
-  customerId  Int      @map("customer_id")
+  customerId  String      @map("customer_id")
   origin      String
   destination String
   distance    Float

@@ -53,13 +53,18 @@ type Driver = {
 }
 
 export async function checkHasDriver(id: number): Promise<boolean> {
-    const hasDriver = await prisma.driver.findFirst({
-        where: {
-            id: id
-        }
-    })
-    // const hasDriver = driversData.find(driver => driver.id === id);
-    return !!hasDriver;
+    try {
+        const driver = await prisma.driver.findFirst({
+            where: {
+                id: id
+            }
+        })
+
+        return !!driver
+    } catch (error) {
+        console.log("Ta no catch: ")
+        return false
+    }
 }
 
 export async function getDriverById(id: number) {
@@ -77,7 +82,7 @@ export async function getDriverById(id: number) {
 export async function distanceIsValidToDriver(distance: number, driverId: number) {
     const driver = await getDriverById(driverId);
     if (driver) {
-        if (driver.minKm <= distance) {
+        if (driver.minKm <= (distance/1000)) {
             return true;
         }
     }

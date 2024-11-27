@@ -4,6 +4,7 @@ import ConfirmTravelController from "./controllers/ConfirmTravelController";
 import { getTravels } from "./data/TravelsHistoryData";
 import UserTravelsController from "./controllers/UserTravelsController";
 import axios from "axios";
+import ListDriversController from "./controllers/ListDriversController";
 const router = Router();
 router.get('/map', async (req: Request, res: Response) => {
 
@@ -32,6 +33,8 @@ router.get('/map', async (req: Request, res: Response) => {
     const route = data.routes[0];
     const encodedPolyline = route.overview_polyline.points;
     const duration = route.legs[0].duration.text;
+    const distance = route.legs[0].distance.text;
+    console.log(route.legs[0]);
 
     if (!encodedPolyline) {
         res.status(400).send({ error: "Ocorreu algum erro com a criação da rota." });
@@ -46,13 +49,15 @@ router.get('/map', async (req: Request, res: Response) => {
 
     res.send({
         staticMapURL,
-        duration
+        duration,
+        distance
     });
 
 
 });
 router.post("/estimate", new CalculateTravelController().handle);
 router.patch("/confirm", new ConfirmTravelController().handle);
+router.get("/drivers", new ListDriversController().handle)
 router.get("/:customer_id", new UserTravelsController().handle)
 
 router.get("/test/travels", getTravels);

@@ -1,18 +1,19 @@
 import { Request, Response } from "express";
 import { checkHasDriver, distanceIsValidToDriver } from "../data/driversData";
 import ConfirmTravelService from "../services/ConfirmTravelService";
-import { Travel } from "../data/TravelsHistoryData";
 
 class ConfirmTravelController {
 
     async handle(req: Request, res: Response) {
 
-        const travelInfos = req.body as Travel
+        console.log("Request Body: ", req.body)
+        const travelInfos = req.body
+        const errorDescription = "Os dados fornecidos no corpo da requisição são inválidos"
 
         if (!travelInfos.customer_id) {
             res.status(400).send({
                 "error_code": "INVALID_DATA",
-                "error_description": "O id do usuario nao pode estar em branco."
+                "error_description": errorDescription
             })
             return;
         }
@@ -20,7 +21,7 @@ class ConfirmTravelController {
         if (!travelInfos.origin || !travelInfos.destination) {
             res.status(400).send({
                 "error_code": "INVALID_DATA",
-                "error_description": "Os enderecos de origem e destino recebidos nao podem estar em branco."
+                "error_description": errorDescription
             })
             return;
         }
@@ -28,39 +29,46 @@ class ConfirmTravelController {
         if (travelInfos.destination === travelInfos.origin) {
             res.status(400).send({
                 "error_code": "INVALID_DATA",
-                "error_description": "Os enderecos de origem e destino nao podem ser o mesmo endereco."
+                "error_description": errorDescription
             })
             return;
         }
 
-        if (!checkHasDriver(travelInfos.driver.id)) {
-            res.statusMessage = "Motorista nao encontrado";
+        if (!await checkHasDriver(travelInfos.driver.id)) {
             res.status(404).send({
                 "error_code":
                     "DRIVER_NOT_FOUND",
                 "error_description":
-                    "A opcao de motorista informada e invalida"
+                    "Motorista não encontrado"
             });
             return;
         }
 
-        if (!distanceIsValidToDriver(travelInfos.distance, travelInfos.driver.id)) {
-            res.statusMessage = "Quilometragem invalida para o motorista";
+        if (!await distanceIsValidToDriver(travelInfos.distance, travelInfos.driver.id)) {
             res.status(406).send({
                 "error_code":
                     "INVALID_DISTANCE",
                 "error_description":
-                    "A quilometragem informada e invalida para o motorista selecionado."
+                    "Quilometragem inválida para o motorista"
             });
             return;
         }
 
         const confirmTravelService = new ConfirmTravelService();
-        await confirmTravelService.execute(travelInfos)
+        try {
+            await confirmTravelService.execute(travelInfos)
+            res.status(200).send({ "success": true })
+            return;
+        } catch (error) {
+            res.status(400).send({
+                "error_code": "INVALID_DATA",
+                "error_description": errorDescription
+            })
+            return;
+        }
 
-        res.statusMessage = "Operacao realizada com sucesso";
-        res.status(200).send({ "success": true })
-        return;
+
+
 
 
     }

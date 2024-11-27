@@ -1,21 +1,18 @@
     BACKEND
 - Utilizar middlewares para validação
-- Utilizar um banco de dados real
 - Remover função que coloquei para testar apenas: getTravels()
 - Referenciar a key apenas com o valor em .env
+- Remover arquivos de data
+- Corrigir a data
 
 
 
 
     FRONTEND
 - Deixar a baseUrl como default
-- Faltando chamar a api para buscar o historico de viagens
-- Corrigir erro que aparece na primeira tela no input do id(principalmente quando digita um valor que nao é numero)
-- Buscar os Drivers("Motoristas") do banco de dados.
-- Corrigir bug de mostrar as viagens do user anterior quando deixa o input do id vazio.
 - garantir que a duração estimada esteja sempre em pt-br
-- Verificar se existem motoristas disponiveis
-
+- Fazer um botão voltar para a home na última tela
+- Alterar name do arquivo errorTypes
 
 
 
@@ -23,11 +20,7 @@
 - Mudar a key para o .env
 - Fazer tipagem do que ainda não tem
 - Separar as funções em blocos menores
-- Verificar se todos os tipos estão corretos de acordo com o pdf.
-- Acredito que o ideal seja passar origin, destination e polyline por parametro para pegar o mapa, e não precisar chamar a api do google
-dnv dentro de /ride/map(talvez seja melhor montar o mapa no frontend, tendo em vista que não foi passado esse endpoint)
-- Fazer validações mais especificas nos erros.
-- Buscar motoristas no back e trazer pra ultima tela no front.
+- Verificar se http://localhost:8080/ride/${customerId}?driver_id=${driverSelected} sem passar customerId cai no endpoint
 
 
 
@@ -35,3 +28,5 @@ dnv dentro de /ride/map(talvez seja melhor montar o mapa no frontend, tendo em v
     DUVIDAS
 - Na ultima tela do front, faz mais sentido chamar todas as viagens do usuario e mostrar só aquelas com o motorista selecionado, ou 
 fazer uma nova requisição sempre que o motorista é trocado?
+- Deveria ter feito uma validacao para o banco de dados?
+- Deveria ter criado um tipo na ConfirmTravelController para travelInfos?

@@ -11,7 +11,7 @@ CREATE TABLE "Driver" (
 CREATE TABLE "Ride" (
     id SERIAL PRIMARY KEY,
     date TIMESTAMP NOT NULL,
-    customer_id INT NOT NULL,
+    customer_id VARCHAR(255) NOT NULL,
     origin VARCHAR(255) NOT NULL,
     destination VARCHAR(255) NOT NULL,
     distance NUMERIC(10, 2) NOT NULL,
