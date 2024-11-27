@@ -19,7 +19,7 @@ router.get('/map', async (req: Request, res: Response) => {
             origin,
             destination,
             mode: "driving",
-            key: process.env.GOOGLE_API_KEY || "AIzaSyABnRgaRiD6Ezk_WDUToeX5Uc1zRqQlUpM", // Defina sua chave em um arquivo .env
+            key: process.env.GOOGLE_API_KEY
         },
     });
 
@@ -45,7 +45,9 @@ router.get('/map', async (req: Request, res: Response) => {
     staticMapURL.searchParams.set("path", `enc:${encodedPolyline}`);
     staticMapURL.searchParams.append("markers", `color:red|label:A|${origin}`);
     staticMapURL.searchParams.append("markers", `color:red|label:B|${destination}`);
-    staticMapURL.searchParams.set("key", process.env.GOOGLE_API_KEY || "AIzaSyABnRgaRiD6Ezk_WDUToeX5Uc1zRqQlUpM");
+    if (process.env.GOOGLE_API_KEY) {
+        staticMapURL.searchParams.set("key", process.env.GOOGLE_API_KEY)
+    }
 
     res.send({
         staticMapURL,

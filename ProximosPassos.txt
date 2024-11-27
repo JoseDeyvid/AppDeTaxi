@@ -1,7 +1,6 @@
     BACKEND
 - Utilizar middlewares para validação
 - Remover função que coloquei para testar apenas: getTravels()
-- Referenciar a key apenas com o valor em .env
 - Remover arquivos de data
 - Corrigir a data
 
@@ -13,6 +12,7 @@
 - garantir que a duração estimada esteja sempre em pt-br
 - Fazer um botão voltar para a home na última tela
 - Alterar name do arquivo errorTypes
+- Bloquear cliques enquanto esta carregando alguma requisição
 
 
 

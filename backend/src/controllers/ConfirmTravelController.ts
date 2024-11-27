@@ -6,7 +6,7 @@ class ConfirmTravelController {
 
     async handle(req: Request, res: Response) {
 
-        console.log("Request Body: ", req.body)
+        // console.log("Request Body: ", req.body)
         const travelInfos = req.body
         const errorDescription = "Os dados fornecidos no corpo da requisição são inválidos"
 

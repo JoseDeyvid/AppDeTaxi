@@ -47,14 +47,13 @@ const TravelsHistory = ({ }: Props) => {
     }
 
     const changeDriverSelected = (id: number | null = null) => {
-        console.log(id)
         setDriverSelected(id)
 
     }
 
     const formattedDate = (date: Date) => {
-        return date.toLocaleString("pt-BR", {
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        return new Date(date).toLocaleString("pt-BR", {
+            timeZone: "America/Sao_Paulo",
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit",
@@ -62,7 +61,20 @@ const TravelsHistory = ({ }: Props) => {
             month: '2-digit',
             year: 'numeric'
         })
+
+        // return formatDate(date)
     }
+
+    const formatDate = (isoString: Date) => {
+        const date = new Date(isoString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
+        const year = date.getFullYear();
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+
+        return `${day}/${month}/${year} - ${hours}:${minutes}`;
+    };
     return (
         <div className='travelsHistoryContainer'>
             <div className='formControl'>

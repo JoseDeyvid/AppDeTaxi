@@ -15,7 +15,7 @@ class CalculateTravelService {
                 "travelMode": "DRIVE"
             }, {
                 headers: {
-                    "X-Goog-Api-Key": "AIzaSyABnRgaRiD6Ezk_WDUToeX5Uc1zRqQlUpM",
+                    "X-Goog-Api-Key": process.env.GOOGLE_API_KEY,
                     "X-Goog-FieldMask": "routes.legs"
                 }
             })
