@@ -2,7 +2,6 @@
 - Utilizar middlewares para validação
 - Remover função que coloquei para testar apenas: getTravels()
 - Remover arquivos de data
-- Corrigir a data
 
 
 
@@ -17,7 +16,6 @@
 
 
     AMBOS
-- Mudar a key para o .env
 - Fazer tipagem do que ainda não tem
 - Separar as funções em blocos menores
 - Verificar se http://localhost:8080/ride/${customerId}?driver_id=${driverSelected} sem passar customerId cai no endpoint
