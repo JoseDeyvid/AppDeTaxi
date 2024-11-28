@@ -17,7 +17,6 @@ export function showMessageError(error: unknown) {
         
         const errorData = error.response?.data as ErrorData
         if (errorData) {
-            console.log(error)
             toast.error(errorData.error_description)
         } else {
             toast.error(error.message)

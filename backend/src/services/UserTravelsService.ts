@@ -3,7 +3,6 @@ import prisma from "../prisma";
 
 class UserTravelsService {
     async execute(customer_id: string, driver_id?: number) {
-        console.log("Id do motorista: ",driver_id)
         if (driver_id) {
             return await prisma.ride.findMany({
                 where: {

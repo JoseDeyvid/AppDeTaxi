@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { checkHasDriver } from "../data/driversData";
+import { checkHasDriver } from "../facade/driversFacade";
 import UserTravelsService from "../services/UserTravelsService";
 
 class UserTravelsController {

@@ -3,10 +3,7 @@ import CalculateTravelService from "../services/CalculateTravelService";
 
 class CalculateTravelController {
     async handle(req: Request, res: Response) {
-        console.log("Pegou a env: ", process.env.GOOGLE_API_KEY)
         const { customer_id, origin, destination } = req.body;
-        // console.log("Request Body: ",req.body)
-        // res.statusMessage = "Os dados fornecidos no corpo da requisicao sao invalidos";
         const errorDescription = "Os dados fornecidos no corpo da requisição são inválidos"
         if (!customer_id) {
             res.status(400).send({

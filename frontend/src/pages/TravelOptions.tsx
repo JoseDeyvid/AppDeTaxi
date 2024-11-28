@@ -18,8 +18,9 @@ const TravelOptions = ({ travel, customerId, setHistoryTravels }: Props) => {
     const [mapUrl, setMapUrl] = useState('');
     const [duration, setDuration] = useState('');
     const [distance, setDistance] = useState('');
+    const [startAddress, setStartAddres] = useState('');
+    const [endAddress, setEndAddress] = useState('');
     useEffect(() => {
-        console.log(travel);
         const loadMap = async () => {
 
             try {
@@ -32,6 +33,8 @@ const TravelOptions = ({ travel, customerId, setHistoryTravels }: Props) => {
                 setMapUrl(res.data.staticMapURL);
                 setDuration(res.data.duration);
                 setDistance(res.data.distance);
+                setStartAddres(res.data.startAddress)
+                setEndAddress(res.data.endAddress)
 
             } catch (error) {
                 toast.error("Infelizmente não foi possível carregar todas as informações do mapa!")
@@ -44,8 +47,8 @@ const TravelOptions = ({ travel, customerId, setHistoryTravels }: Props) => {
         try {
             const res = await axios.patch("http://localhost:8080/ride/confirm", {
                 "customer_id": customerId,
-                "origin": `${travel.origin.latitude}, ${travel.origin.longitude}`,
-                "destination": `${travel.destination.latitude}, ${travel.destination.longitude}`,
+                "origin": startAddress,
+                "destination": endAddress,
                 "distance": travel.distance,
                 "duration": travel.duration,
                 "driver": {

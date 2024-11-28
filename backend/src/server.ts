@@ -3,8 +3,6 @@ import { router } from "./routes"
 
 import path from "path";
 require("dotenv").config({ path: path.resolve(__dirname, '../../.env') })
-console.log({ path: path.resolve(__dirname, '../../.env') })
-
 const app: Express = express()
 
 import cors from "cors";

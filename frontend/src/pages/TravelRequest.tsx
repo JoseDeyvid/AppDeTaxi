@@ -24,7 +24,6 @@ const TravelRequest = ({ setTravel, customerId, setCustomerId }: Props) => {
                 origin,
                 destination,
             })
-            console.log("Response Body: ", res.data);
             toast.success("Operação realizada com sucesso");
             setTravel(res.data);
         } catch (error) {
